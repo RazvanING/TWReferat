@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplicație SPA cu Vue.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+  <!-- Containerul principal pentru aplicația SPA -->
+  <div id="app">
+    <nav>
+      <ul>
+        <li><a href="#" @click.prevent="currentView = 'home'">Acasă</a></li>
+        <li><a href="#" @click.prevent="currentView = 'about'">Despre</a></li>
+        <li><a href="#" @click.prevent="currentView = 'contact'">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Selecția vizualizării curente -->
+    <div v-if="currentView === 'home'">
+      <h1>Pagina de Acasă</h1>
+      <p>Acesta este conținutul paginii de acasă.</p>
+    </div>
+    <div v-if="currentView === 'about'">
+      <h1>Despre Noi</h1>
+      <p>Acesta este conținutul paginii despre noi.</p>
+    </div>
+    <div v-if="currentView === 'contact'">
+      <h1>Contact</h1>
+      <p>Acesta este conținutul paginii de contact.</p>
+    </div>
+  </div>
+
+  <!-- Scriptul Vue.js -->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        currentView: 'home' // Pagină implicită
+      }
+    });
+  </script>
+
+</body>
+</html>
