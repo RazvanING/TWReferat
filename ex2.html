@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplu Web Component</title>
+</head>
+<body>
+
+  <!-- Utilizarea componentei personalizate -->
+  <user-card name="Ion Popescu" age="30"></user-card>
+  <user-card name="Maria Ionescu" age="25"></user-card>
+
+  <!-- Definirea Web Component-ului -->
+  <script>
+    // Definirea clasei pentru Web Component
+    class UserCard extends HTMLElement {
+      constructor() {
+        super();
+        // Crearea unui shadow DOM pentru a encapsula stilurile și conținutul
+        this.attachShadow({ mode: 'open' });
+      }
+
+      // Metoda pentru a actualiza componenta când a fost adăugat în DOM
+      connectedCallback() {
+        // Obținem valorile atributelor din tag-ul HTML
+        const name = this.getAttribute('name');
+        const age = this.getAttribute('age');
+
+        // Creăm HTML-ul intern al componentei
+        this.shadowRoot.innerHTML = `
+          <style>
+            div {
+              border: 1px solid #ddd;
+              padding: 10px;
+              margin: 10px 0;
+              border-radius: 5px;
+              font-family: Arial, sans-serif;
+              background-color: #f9f9f9;
+            }
+            h2 {
+              color: #2c3e50;
+            }
+          </style>
+          <div>
+            <h2>${name}</h2>
+            <p>Vârsta: ${age} ani</p>
+          </div>
+        `;
+      }
+    }
+
+    // Înregistrarea componentei în browser
+    customElements.define('user-card', UserCard);
+  </script>
+
+</body>
+</html>
