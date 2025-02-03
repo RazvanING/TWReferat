@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Îmbunătățirea HTML-ului Static cu Vue.js</title>
+  <!-- Încarcă Vue.js dintr-un CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+  <!-- Containerul principal care va conține aplicația Vue.js -->
+  <div id="app">
+    <h1>{{ message }}</h1>
+    <button @click="changeMessage">Schimbă mesajul</button>
+  </div>
+
+  <!-- Scriptul Vue.js -->
+  <script>
+    // Inițializăm o aplicație Vue.js
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'Salut, această pagină este statică, dar acum este interactivă!'
+      },
+      methods: {
+        // Metodă pentru a schimba mesajul
+        changeMessage() {
+          this.message = 'Ai apăsat butonul și mesajul s-a schimbat!';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
